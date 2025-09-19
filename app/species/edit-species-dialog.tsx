@@ -1,6 +1,5 @@
 "use client";
 
-import { Icons } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -26,13 +25,9 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 type Species = Database["public"]["Tables"]["species"]["Row"];
-type SpeciesUpdate = Database["public"]["Tables"]["species"]["Update"];
 
 // Define kingdom enum for use in Zod schema and displaying dropdown options in the form
 const kingdoms = z.enum(["Animalia", "Plantae", "Fungi", "Protista", "Archaea", "Bacteria"]);
-
-// Get the kingdom type from the database schema
-type Kingdom = Database["public"]["Enums"]["kingdom"];
 
 // Use Zod to define the shape + requirements of a Species entry; used in form validation
 const speciesSchema = z.object({
@@ -114,7 +109,7 @@ export default function EditSpeciesDialog({ species, children }: EditSpeciesDial
     if (error) {
       return toast({
         title: "Something went wrong.",
-        description: error.message,
+        description: error?.message ?? "An unknown error occurred",
         variant: "destructive",
       });
     }
@@ -150,7 +145,10 @@ export default function EditSpeciesDialog({ species, children }: EditSpeciesDial
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
-          <form onSubmit={(e: BaseSyntheticEvent) => void form.handleSubmit(onSubmit)(e)}>
+          <form onSubmit={(e: BaseSyntheticEvent) => {
+            e.preventDefault();
+            void form.handleSubmit(onSubmit)(e);
+          }}>
             <div className="grid w-full items-center gap-4">
               <FormField
                 control={form.control}
