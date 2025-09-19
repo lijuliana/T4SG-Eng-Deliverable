@@ -62,7 +62,7 @@ export default function ProfileForm({ profile }: { profile: Profile }) {
   const onSubmit = async (data: ProfileFormValues) => {
     // Instantiate Supabase client (for client components) and make update based on input data
     const supabase = createBrowserSupabaseClient();
-    const { error } = await supabase
+    const { error } = await (supabase as any)
       .from("profiles")
       .update({ biography: data.bio, display_name: data.username })
       .eq("id", profile.id);
