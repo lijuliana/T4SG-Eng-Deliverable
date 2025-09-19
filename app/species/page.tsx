@@ -44,5 +44,5 @@ export default async function SpeciesPage() {
     `)
     .order("id", { ascending: false }) as { data: SpeciesWithAuthor[] | null };
 
-  return <SpeciesList species={species || []} sessionId={sessionId} />;
+  return <SpeciesList species={species ?? []} sessionId={sessionId} />;
 }

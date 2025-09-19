@@ -30,7 +30,7 @@ export default async function UsersPage() {
       <div className="mb-5 flex flex-wrap items-center justify-between gap-4">
         <TypographyH2>Users</TypographyH2>
         <p className="text-sm text-gray-600">
-          {profiles?.length || 0} user{profiles?.length !== 1 ? 's' : ''} registered
+          {profiles?.length ?? 0} user{profiles?.length !== 1 ? 's' : ''} registered
         </p>
       </div>
       <Separator className="my-4" />

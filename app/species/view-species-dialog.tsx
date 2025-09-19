@@ -108,12 +108,12 @@ export default function ViewSpeciesDialog({ species, currentUserId, children }: 
               <div className="flex items-center space-x-3">
                 <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
                   <span className="text-blue-600 font-semibold text-sm">
-                    {species.author_profile?.display_name?.charAt(0) || '?'}
+                    {species.author_profile?.display_name?.charAt(0) ?? '?'}
                   </span>
                 </div>
                 <div>
                   <p className="text-lg font-medium text-gray-900">
-                    {species.author_profile?.display_name || 'Unknown User'}
+                    {species.author_profile?.display_name ?? 'Unknown User'}
                   </p>
                   {species.author_profile?.email && (
                     <p className="text-sm text-gray-500">{species.author_profile.email}</p>

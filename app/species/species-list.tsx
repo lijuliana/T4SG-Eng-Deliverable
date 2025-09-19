@@ -35,9 +35,9 @@ export default function SpeciesList({ species, sessionId }: SpeciesListProps) {
     if (!searchQuery.trim()) return true;
     
     const query = searchQuery.toLowerCase();
-    const scientificName = species.scientific_name?.toLowerCase() || "";
-    const commonName = species.common_name?.toLowerCase() || "";
-    const description = species.description?.toLowerCase() || "";
+    const scientificName = species.scientific_name?.toLowerCase() ?? "";
+    const commonName = species.common_name?.toLowerCase() ?? "";
+    const description = species.description?.toLowerCase() ?? "";
     
     return (
       scientificName.includes(query) ||
@@ -67,7 +67,7 @@ export default function SpeciesList({ species, sessionId }: SpeciesListProps) {
         </div>
         {searchQuery && (
           <p className="mt-2 text-sm text-gray-600">
-            {filteredSpecies.length} species found for "{searchQuery}"
+            {filteredSpecies.length} species found for &quot;{searchQuery}&quot;
           </p>
         )}
       </div>
