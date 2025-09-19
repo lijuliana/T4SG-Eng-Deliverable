@@ -11,9 +11,15 @@ import type { Database } from "@/lib/schema";
 
 type Species = Database["public"]["Tables"]["species"]["Row"];
 type Profile = Database["public"]["Tables"]["profiles"]["Row"];
+type Comment = Database["public"]["Tables"]["comments"]["Row"];
+
+type CommentWithAuthor = Comment & {
+  author_profile: Profile | null;
+};
 
 type SpeciesWithAuthor = Species & {
   author_profile: Profile | null;
+  comments: CommentWithAuthor[];
 };
 
 interface SpeciesListProps {
