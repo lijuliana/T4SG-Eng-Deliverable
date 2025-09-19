@@ -34,7 +34,7 @@ export default function AnimalSpeedGraph() {
         const parsedData: AnimalDatum[] = [];
         
         for (let i = 1; i < lines.length; i++) {
-          const line = lines[i].trim();
+          const line = lines[i]?.trim();
           if (!line) continue;
           
           const values = line.split(',');
