@@ -18,14 +18,19 @@ export default async function Navbar({ className, ...props }: React.HTMLAttribut
           <Link href="/species" className="text-sm font-medium transition-colors hover:text-primary">
             Species
           </Link>
-          <Link href="/species-speed" className="text-sm font-medium transition-colors hover:text-primary">
-            Species Speed
+          <Link href="/visualization" className="text-sm font-medium transition-colors hover:text-primary">
+            Visualization
           </Link>
         </>
       )}
       {user && (
         <Link href="/species-chatbot" className="text-sm font-medium transition-colors hover:text-primary">
           Species Chatbot
+        </Link>
+      )}
+      {user && (
+        <Link href="/users" className="text-sm font-medium transition-colors hover:text-primary">
+          Users
         </Link>
       )}
     </nav>
